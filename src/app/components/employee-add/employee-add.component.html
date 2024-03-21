@@ -1,0 +1,56 @@
+<div>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        @if(isEdit && id > 0){
+        <h4>Edit New Employee</h4>
+        }@else{
+        <h4>Create New Employee</h4>
+        }
+
+        <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="name" formControlName="name">
+            </mat-form-field>
+        </div>
+        <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email">
+            </mat-form-field>
+        </div>
+        <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Mobile</mat-label>
+                <input type="tel" matInput placeholder="Mobile" formControlName="mobile">
+                <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="department">
+                    <mat-option value="select">Select</mat-option>
+                    <mat-option value="IT">IT</mat-option>
+                    <mat-option value="Account">Account</mat-option>
+                    <mat-option value="Sales">Sales</mat-option>
+                    <mat-option value="Marketing">Marketing</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="w-full flex flex-wrap">
+            <mat-form-field class="w-full">
+                <mat-label>Salary</mat-label>
+                <input type="number" matInput placeholder="salary" formControlName="salary">
+                <mat-icon matSuffix>attach_money</mat-icon>
+            </mat-form-field>
+        </div>
+
+        @if(isEdit && id > 0){
+        <button mat-raised-button type="submit" color="primary" [disabled]="!employeeForm.valid">Update</button>
+        }
+        @else{
+        <button mat-raised-button type="submit" color="primary" [disabled]="!employeeForm.valid">Submit</button>
+        }
+
+    </form>
+</div>
